@@ -35,10 +35,12 @@ public abstract class AbsRepo<T> {
 
     public void edit(T entity) {
         getEntityManager().merge(entity);
+        getEntityManager().flush();
     }
 
     public void remove(T entity) {
         getEntityManager().remove(getEntityManager().merge(entity));
+        getEntityManager().flush();
     }
 
     public T find(Object id) {
